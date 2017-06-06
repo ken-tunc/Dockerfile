@@ -47,7 +47,7 @@ RUN cmake \
   && make install \
   && rm -rf /tmp/*
   
-RUN pip3 install -y \
+RUN pip3 install \
     matplotlib \
     scipy \
     jupyter
