@@ -13,4 +13,4 @@ RUN echo "deb http://packages.mapcrafter.org/debian $(lsb_release -sc) main" | t
 
 WORKDIR /root/share
 
-CMD ["mapcrafter", "--config", "render.conf"]
+CMD mapcrafter --config render.conf --jobs "$(nproc --all)"
