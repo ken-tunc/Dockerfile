@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     postgresql \
   && add-apt-repository ppa:fkrull/deadsnakes \
   && apt-get update && apt-get install -y python3.3 \
-  && sudo apt-get remove python-virtualenv
+  && apt-get remove python-virtualenv
 
 WORKDIR /root
 
