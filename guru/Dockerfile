@@ -16,14 +16,16 @@ RUN wget http://peak.telecommunity.com/dist/ez_setup.py \
   && easy_install pip \
   && pip install virtualenv \
   && virtualenv --no-site-packages --distribute -p /usr/bin/python3.3 /root/.virtualenvs/pywork3 \
-  && apt-get install -y python3.3-dev
+  && apt-get install -y python3.3-dev \
+  && virtualenv -p /usr/bin/python3.3 /root/.virtualenvs/guru
 
 RUN gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9 \
   && gpg -a --export E084DAB9 | apt-key add - \
   && echo "deb http://cran.ma.imperial.ac.uk/bin/linux/ubuntu precise/" >> /etc/apt/sources.list \
   && apt-get update && apt-get install -y r-base
 
-RUN pip3 install \
+RUN . /root/.virtualenvs/guru/bin/activate \
+  && pip install \
     rpy2 \
     sqlalchemy \
     py-postgresql \
